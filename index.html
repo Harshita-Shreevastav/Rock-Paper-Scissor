@@ -57,7 +57,7 @@
                     </button>
                 </div>
 
-            <!-- Empty container to show the responses/selections both by the player and the user. -->
+            <!-- Empty container to show the responses/selections  by the player and the user. -->
             </div>
 
             <div class="d-flex justify-content-center response" style="padding:30px 29px 0px 29px; 
@@ -93,13 +93,7 @@
                 scoreUpdate()
 
                 console.log(localStorage)
-                
-                
-                
-
-
-                
-                ">Reset</button>
+                    ">Reset</button>
             </div>
 
            
@@ -112,7 +106,7 @@
         <script>
 
           
-            // Function that decides the computer's move. Taking randomly using in-build ramsom() which takes a value from 0 to 1 both inclusive. Divided the 0 to 1 range into 3 equal parts and assign each part to rock, paper and scissor respectively. Then, using && operators loopes it on the basis og conditions. Used less than/more than and not equal to less than/more than to avoid over lapping of values.
+            // Function that decides the computer's move. Taking randomly using in-build random() that takes a value from 0 to 1 both inclusive. Divided the 0 to 1 range into 3 equal parts and assign each part to rock, paper and scissor respectively. Then, using && operators loopes it on the basis og conditions. Used less than/more than and not equal to less than/more than to avoid over lapping of values.
 
             function decideMove() {
                 randomMove=Math.random();
@@ -124,33 +118,22 @@
                 if (randomMove>0 && randomMove<1/3){
 
                     computerMove='Rock';
-                    
-
-                    
-
-
                 }
 
                 else if (randomMove>1/3 && randomMove<2/3){
 
                     computerMove='Paper';
-                    
-
-
                 }
                 else if (randomMove>2/3 && randomMove<1){
 
                     computerMove='Scissor';
-
-                    
-
                 }
 
                 return computerMove;
             }
 
 
-            //Checks whether the reults objects data are false, if not it retrieves the data from the local storage else goes with the default values 0 0 0. degaulting/default operator(||)
+            //Checks whether the results objects data are false, if not it retrieves the data from the local storage else goes with the default values 0 0 0. degaulting/default operator(||)
 
             
             
@@ -162,16 +145,11 @@
             scoreUpdate()
             console.log(localStorage)
         
-
-            
-            
-
-            
             //Function to check the result
 
             function decideResult(userMove,computerMove){
 
-                // Displays the selection by both player and computer by acessing the empty container response. Leaving the place where the moves will be diplayed. YOUR CHOICE--- COMPUTER CHOICE---.----
+                // Displays the selection by both player and computer by accessing the empty container response. Leaving the place where the moves will be diplayed. YOUR CHOICE--- COMPUTER CHOICE---.----
 
                 document.querySelector('.response').innerHTML=`
                 <div>
@@ -195,17 +173,9 @@
                 </div>`
 
                 let result='';
-
-                
-                
-                
- 
-                
                 if (userMove==='Rock'){
-
                     
-                    
-                    // When the player choose ROCK
+                    // When the player chooses ROCK
 
                     if (computerMove==='Rock'){
 
@@ -293,12 +263,6 @@
                     }
                     document.querySelector('.player-choice').     innerHTML= "<img src='paper.jpeg' style='width: 50px;'>"
                     document.querySelector('.result').innerHTML= result
-                    
-
-                   
-                    
-
-                    
                 }
                 //WHEN PLAYER CHOSE SCISSOR
                 else if (userMove==='Scissor'){
@@ -343,16 +307,7 @@
 
                     document.querySelector('.player-choice').     innerHTML= "<img src='scissor.jpeg' style='width: 50px;'>"
                     document.querySelector('.result').innerHTML= result
-                    
-                    
-                    
                 }
-
-                        
-                
-                
-
-
             }
 
             //Function to update the score board.
