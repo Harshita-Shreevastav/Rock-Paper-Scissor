@@ -17,7 +17,7 @@
 
     </head>
 
-    <body style="padding: 50px; font-family: Roboto-Serif;">
+    <body style="padding: 50px; font-family: Roboto-Serif; background-color: black; color: white;">
         
         <!-- Rock,paper, scissor buttons -->
 
@@ -26,25 +26,25 @@
             <div class="d-flex justify-content-center" style="font-size: 50px; margin-bottom: 30px;">
                 <p>Rock Paper Scissor</p>
             </div>
-            <div class="d-flex justify-content-center">
+            <div class="d-flex justify-content-center" style="background-color: black; column-gap: 10px;">
 
                 <!-- Rock Button -->
-                <div >
-                    <button style="background-color: white; border:none" id="rock-button">
+                <div style="background-color: black;">
+                    <button style="background-color: black; border:none ; width: 120px" id="rock-button" class='rounded-circle' >
                         <img src="rock.jpeg" class="rounded-circle"  style="width: 120px; " >
                     </button>
                 </div>
 
                 <!-- Paper Button -->
-                <div >
-                    <button style="background-color: white; border:none" id="paper-button">
+                <div style="background-color: black;">
+                    <button style="background-color: black;width: 120px; border:none" id="paper-button">
                         <img src="paper.jpeg" class="rounded-circle"  style="width: 120px">
                     </button>
                 </div>
 
                 <!-- Scissor Button -->
-                <div >
-                    <button style="background-color: white; border:none" id="scissor-button">
+                <div  >
+                    <button style="background-color: black; border:none" id="scissor-button">
                     <img src="scissor.jpeg" class="rounded-circle"  style="width: 120px; ">
                     </button>
                 </div>
@@ -53,7 +53,7 @@
             
             
 
-            <div class="d-flex justify-content-center result" style="padding:20px 20px; font-size: 40px; margin: 40px 0px 0px 0px; border-top:1px solid black;">
+            <div class="d-flex justify-content-center result" style="padding:20px 20px; font-size: 40px; margin: 40px 0px 0px 0px; border-top:1px solid white;">
 
             </div>
 
@@ -81,7 +81,7 @@
 
                 <!-- Reset Button -->
                 <div>
-                    <button type="button" class="btn btn-secondary" style="padding:0px 20px; font-size: 20px; margin: 0px 0px 0px 0px; border: 2px solid black"  onclick="
+                    <button type="button" class="btn btn-secondary" style="padding:0px 20px; font-size: 20px; margin: 0px 0px 0px 0px; border: 2px solid white; color: white;background-color: black;"  onclick="
 
                     alert('The scores will get reset.')
 
@@ -235,13 +235,13 @@
                     <p style='font-size: 30px;'> You chose</p>
                 </div>
 
-                <div class='player-choice' style='margin: -20px 15px 0 0;'>
+                <div class='player-choice' style='background-color:black;margin: -20px 15px 0 0;'>
                     
                 </div> 
 
                
 
-                <div class="computer-choice"  style="margin: -20px 0 0 15px; padding-top:-30px;" >
+                <div class="computer-choice"  style="background-color: black;margin: -20px 0 0 15px; padding-top:-30px;" >
                     
                 </div>
 
@@ -273,7 +273,7 @@
                         
                         scoreUpdate()
                         console.log(localStorage)
-                        document.querySelector('.computer-choice').  innerHTML= "<img src='rock-active.jpeg' style='width: 50px;'>"
+                        document.querySelector('.computer-choice').  innerHTML= "<img src='rock-active.jpeg' style='width: 50px;border-radius: 100px' >"
                         
                     }
                     
@@ -285,7 +285,7 @@
                         localStorage.setItem('score',JSON.stringify(results)) 
                         scoreUpdate
                         console.log(localStorage) 
-                        document.querySelector('.computer-choice').innerHTML= "<img src='paper-active.jpeg' style='width: 50px;'>"                   
+                        document.querySelector('.computer-choice').innerHTML= "<img src='paper-active.jpeg' style='width: 50px; border-radius: 100px'>"                   
                     }
                     
                     else if (computerMove==='Scissor'){
@@ -296,10 +296,10 @@
                         localStorage.setItem('score',JSON.stringify(results))
                         scoreUpdate()
                         console.log(localStorage)
-                        document.querySelector('.computer-choice').innerHTML= "<img src='scissor-active.jpeg' style='width: 50px;'>"
+                        document.querySelector('.computer-choice').innerHTML= "<img src='scissor-active.jpeg' style='width: 50px; border-radius: 100px' >"
                         
                     }
-                    document.querySelector('.player-choice').innerHTML= "<img src='rock-active.jpeg' style='width: 50px;'>"
+                    document.querySelector('.player-choice').innerHTML= "<img src='rock-active.jpeg' style='width: 50px; border-radius: 100px'>"
                     document.querySelector('.result').innerHTML= result
 
                     
@@ -322,7 +322,7 @@
                         localStorage.setItem('score',JSON.stringify(results))
                         scoreUpdate()
                         console.log(localStorage)
-                        document.querySelector('.computer-choice').   innerHTML= "<img src='rock-active.jpeg' style='width: 50px;'>"
+                        document.querySelector('.computer-choice').   innerHTML= "<img class='rounded-circle'src='rock-active.jpeg' style='width: 50px;border-radius: 100px' >"
                         
                     }
                     else if (computerMove==='Paper'){
@@ -333,7 +333,7 @@
                         localStorage.setItem('score',JSON.stringify(results))
                         scoreUpdate()
                         console.log(localStorage)
-                        document.querySelector('.computer-choice').   innerHTML= "<img src='paper-active.jpeg' style='width: 50px;'>"
+                        document.querySelector('.computer-choice').   innerHTML= "<img src='paper-active.jpeg' style='width: 50px;border-radius: 100px'>"
                         
                     }
 
@@ -345,10 +345,10 @@
                         localStorage.setItem('score',JSON.stringify(results))
                         scoreUpdate()
                         console.log(localStorage)
-                        document.querySelector('.computer-choice').   innerHTML= "<img src='scissor-active.jpeg' style='width: 50px;'>"
+                        document.querySelector('.computer-choice').   innerHTML= "<img src='scissor-active.jpeg' style='width: 50px;border-radius: 100px'>"
                         
                     }
-                    document.querySelector('.player-choice').     innerHTML= "<img src='paper-active.jpeg' style='width: 50px;'>"
+                    document.querySelector('.player-choice').     innerHTML= "<img src='paper-active.jpeg'  style='width: 50px;border-radius: 100px'>"
                     document.querySelector('.result').innerHTML= result
                     
 
@@ -370,7 +370,7 @@
                         localStorage.setItem('score',JSON.stringify(results))
                         scoreUpdate()
                         console.log(localStorage)
-                        document.querySelector('.computer-choice').   innerHTML= "<img src='rock-active.jpeg' style='width: 50px;'>"
+                        document.querySelector('.computer-choice').   innerHTML= "<img src='rock-active.jpeg' style='width: 50px; border-radius: 100px'>"
                         
                     }
                     else if (computerMove==='Paper'){
@@ -381,7 +381,7 @@
                         localStorage.setItem('score',JSON.stringify(results))
                         scoreUpdate()
                         console.log(localStorage)
-                        document.querySelector('.computer-choice').   innerHTML= "<img src='paper-active.jpeg' style='width: 50px;'>"
+                        document.querySelector('.computer-choice').   innerHTML= "<img src='paper-active.jpeg' style='width: 50px; border-radius: 100px'>"
 
                         
                     }
@@ -394,11 +394,11 @@
                         localStorage.setItem('score',JSON.stringify(results))
                         scoreUpdate()
                         console.log(localStorage)
-                        document.querySelector('.computer-choice').innerHTML= "<img src='scissor-active.jpeg' style='width: 50px;'>"
+                        document.querySelector('.computer-choice').innerHTML= "<img src='scissor-active.jpeg' style='width: 50px; border-radius: 100px'>"
                         
                     }
 
-                    document.querySelector('.player-choice').     innerHTML= "<img src='scissor-active.jpeg' style='width: 50px;'>"
+                    document.querySelector('.player-choice').     innerHTML= "<img src='scissor-active.jpeg' style='width: 50px; border-radius: 100px'>"
                     document.querySelector('.result').innerHTML= result
                     
                     
