@@ -17,84 +17,96 @@
 
     </head>
 
-    <body style="padding: 100px; font-family: Roboto-Serif;">
+    <body style="padding: 50px; font-family: Roboto-Serif;">
         
         <!-- Rock,paper, scissor buttons -->
 
         <div style="display: flex; flex-direction: column;">
+
+            <div class="d-flex justify-content-center" style="font-size: 50px; margin-bottom: 30px;">
+                <p>Rock Paper Scissor</p>
+            </div>
             <div class="d-flex justify-content-center">
 
                 <!-- Rock Button -->
                 <div >
-                    <button style="background-color: white; border:none" onclick="
-                        userMove='Rock';
-                        computerMove=decideMove();
-                        decideResult(userMove,computerMove);
-                        ">
+                    <button style="background-color: white; border:none" id="rock-button">
                         <img src="rock.jpeg" class="rounded-circle"  style="width: 120px; " >
                     </button>
                 </div>
 
                 <!-- Paper Button -->
                 <div >
-                    <button style="background-color: white; border:none" onclick="
-                        userMove='Paper';
-                        computerMove=decideMove();
-                        decideResult(userMove,computerMove);
-                        ">
+                    <button style="background-color: white; border:none" id="paper-button">
                         <img src="paper.jpeg" class="rounded-circle"  style="width: 120px">
                     </button>
                 </div>
 
                 <!-- Scissor Button -->
                 <div >
-                    <button style="background-color: white; border:none" onclick="
-                        userMove='Scissor';
-                        computerMove=decideMove();
-                        decideResult(userMove,computerMove);
-                        ">
+                    <button style="background-color: white; border:none" id="scissor-button">
                     <img src="scissor.jpeg" class="rounded-circle"  style="width: 120px; ">
                     </button>
                 </div>
 
-            <!-- Empty container to show the responses/selections  by the player and the user. -->
+            </div>
+            
+            
+
+            <div class="d-flex justify-content-center result" style="padding:20px 20px; font-size: 40px; margin: 40px 0px 0px 0px; border-top:1px solid black;">
+
             </div>
 
-            <div class="d-flex justify-content-center response" style="padding:30px 29px 0px 29px; 
-             column-gap:5px;border-top:1px solid black; margin-top: 20px">
+
+            <!-- Empty container to show the responses/selections both by the player and the user. -->
+            </div>
+
+            <div class="d-flex justify-content-center response" style="padding:5px 29px 0px 29px; font-size: 30px; ">
 
         
 
             </div>
 
+            
+
             <!-- The score board -->
-            <div class="d-flex justify-content-center" style="padding:5px 29px 10px 29px; column-gap: 0px">
+            <div class="d-flex justify-content-center" style="padding:5px 29px 10px 29px; column-gap: 0px; margin-top:15px">
 
-                <div class="win" style="font-family: Roboto-Serif; font-size:22px; margin: 10px 30px 0px 5px;"></div>
+                <div class="win" style="font-family: Roboto-Serif; font-size:22px; margin: 0px 30px 0px 5px;"></div>
     
-                <div class=lose style="font-family: Roboto-Serif; font-size:22px; margin: 10px 30px 0px 5px;"> </div>
+                <div class=lose style="font-family: Roboto-Serif; font-size:22px; margin: 0px 30px 0px 0px;"> </div>
     
     
-                <div class="tie" style="font-family: Roboto-Serif; font-size:22px; margin: 10px 235px 0px 5px;"></div>
-            </div>
+                <div class="tie" style="font-family: Roboto-Serif; font-size:22px; margin: 0px 30px 0px 5px;"></div>
+
+                <!-- Reset Button -->
+                <div>
+                    <button type="button" class="btn btn-secondary" style="padding:0px 20px; font-size: 20px; margin: 0px 0px 0px 0px; border: 2px solid black"  onclick="
+
+                    alert('The scores will get reset.')
+
+                    localStorage.removeItem('score') //Removes the data from the local storage
+                    results.Win=0
+                    results.Lose=0
+                    results.Tie=0
+
+                    scoreUpdate()
+
+                    console.log(localStorage)
+                    
+                    
+                    
 
 
-            <!-- Reset Button -->
-            <div class="d-flex justify-content-center">
-                <button type="button" class="btn btn-secondary" style="padding:0px 20px; font-size: 20px; margin: 30px 0px 0px 0px; border: 2px solid black"  onclick="
-
-                alert('The scores will get reset.')
-
-                localStorage.removeItem('score') //Removes the data from the local storage
-                results.Win=0
-                results.Lose=0
-                results.Tie=0
-
-                scoreUpdate()
-
-                console.log(localStorage)
+                    
                     ">Reset</button>
+                </div>
             </div>
+
+            
+
+
+            
 
            
         </div>
@@ -105,8 +117,59 @@
 
         <script>
 
+            // Adding event listner to all three buttons. 
+
+            const paperButton=document.getElementById('paper-button');
+            paperButton.addEventListener('click',()=> {
+
+                //Changes the button icon on click
+                paperButton.innerHTML=`<img src="paper-active.jpeg" class="rounded-circle" style="width: 120px">`
+
+                //Brings the button icon back to normal
+                setTimeout(()=>{paperButton.innerHTML=`<img src="paper.jpeg" class="rounded-circle"  style="width: 120px">`},300);
+
+                //Necessary backend processings
+                userMove='Paper';
+                computerMove=decideMove();
+                decideResult(userMove,computerMove);
+                
+
+            });
+
+            
+            const rockButton=document.getElementById('rock-button');
+            rockButton.addEventListener('click',()=> {
+
+                rockButton.innerHTML=`<img src="rock-active.jpeg" class="rounded-circle" style="width: 120px">`;
+
+                setTimeout(()=>{rockButton.innerHTML=`<img src="rock.jpeg" class="rounded-circle"  style="width: 120px">`},300);
+                userMove='Rock';
+                computerMove=decideMove();
+                decideResult(userMove,computerMove);
+                    
+
+                });
+
+            const scissorButton=document.getElementById('scissor-button');
+            scissorButton.addEventListener('click',()=>{
+                scissorButton.innerHTML=`<img src='scissor-active.jpeg' style='width:120px' class='rounded-circle'>`
+
+                setTimeout(()=> {scissorButton.innerHTML=`<img src="scissor.jpeg" style="width:120px" class="rounded-circle">`},300);
+
+                userMove='Scissor';
+                computerMove=decideMove();
+                decideResult(userMove,computerMove);
+
+                
+
+
+                })
+        
+            
+
+
           
-            // Function that decides the computer's move. Taking randomly using in-build random() that takes a value from 0 to 1 both inclusive. Divided the 0 to 1 range into 3 equal parts and assign each part to rock, paper and scissor respectively. Then, using && operators loopes it on the basis og conditions. Used less than/more than and not equal to less than/more than to avoid over lapping of values.
+            // Function that decides the computer's move. Taking randomly using in-build ramsom() which takes a value from 0 to 1 both inclusive. Divided the 0 to 1 range into 3 equal parts and assign each part to rock, paper and scissor respectively. Then, using && operators loopes it on the basis og conditions. Used less than/more than and not equal to less than/more than to avoid over lapping of values.
 
             function decideMove() {
                 randomMove=Math.random();
@@ -118,22 +181,33 @@
                 if (randomMove>0 && randomMove<1/3){
 
                     computerMove='Rock';
+                    
+
+                    
+
+
                 }
 
                 else if (randomMove>1/3 && randomMove<2/3){
 
                     computerMove='Paper';
+                    
+
+
                 }
                 else if (randomMove>2/3 && randomMove<1){
 
                     computerMove='Scissor';
+
+                    
+
                 }
 
                 return computerMove;
             }
 
 
-            //Checks whether the results objects data are false, if not it retrieves the data from the local storage else goes with the default values 0 0 0. degaulting/default operator(||)
+            //Checks whether the reults objects data are false, if not it retrieves the data from the local storage else goes with the default values 0 0 0. degaulting/default operator(||)
 
             
             
@@ -145,37 +219,50 @@
             scoreUpdate()
             console.log(localStorage)
         
+
+            
+            
+
+            
             //Function to check the result
 
             function decideResult(userMove,computerMove){
 
-                // Displays the selection by both player and computer by accessing the empty container response. Leaving the place where the moves will be diplayed. YOUR CHOICE--- COMPUTER CHOICE---.----
+                // Displays the selection by both player and computer by acessing the empty container response. Leaving the place where the moves will be diplayed. YOUR CHOICE--- COMPUTER CHOICE---.----
 
                 document.querySelector('.response').innerHTML=`
-                <div>
-                    <p style='font-size: 25px;'> You chose</p>
+                <div style="margin: -20px 0px 0 40px;">
+                    <p style='font-size: 30px;'> You chose</p>
                 </div>
 
-                <div class='player-choice' style='margin-top: -10px;'>
+                <div class='player-choice' style='margin: -20px 15px 0 0;'>
                     
                 </div> 
 
-                <div>
-                    <p style="font-size: 25px; margin-left:10px;"> Computer chose</p>
-                </div>
+               
 
-                <div class="computer-choice"  style="margin-top: -10px;" >
+                <div class="computer-choice"  style="margin: -20px 0 0 15px; padding-top:-30px;" >
                     
                 </div>
 
-                <div class="result" style="font-size: 25px; margin-left:10px;">
-
+                <div style="margin: -20px 0px 0 0;">
+                    <p style="font-size: 30px; margin:0px 0 0 0;"> Computer chose</p>
                 </div>`
 
+               
+
                 let result='';
+
+                
+                
+                
+ 
+                
                 if (userMove==='Rock'){
+
                     
-                    // When the player chooses ROCK
+                    
+                    // When the player choose ROCK
 
                     if (computerMove==='Rock'){
 
@@ -186,7 +273,7 @@
                         
                         scoreUpdate()
                         console.log(localStorage)
-                        document.querySelector('.computer-choice').  innerHTML= "<img src='rock.jpeg' style='width: 50px;'>"
+                        document.querySelector('.computer-choice').  innerHTML= "<img src='rock-active.jpeg' style='width: 50px;'>"
                         
                     }
                     
@@ -198,7 +285,7 @@
                         localStorage.setItem('score',JSON.stringify(results)) 
                         scoreUpdate
                         console.log(localStorage) 
-                        document.querySelector('.computer-choice').innerHTML= "<img src='paper.jpeg' style='width: 50px;'>"                   
+                        document.querySelector('.computer-choice').innerHTML= "<img src='paper-active.jpeg' style='width: 50px;'>"                   
                     }
                     
                     else if (computerMove==='Scissor'){
@@ -209,10 +296,10 @@
                         localStorage.setItem('score',JSON.stringify(results))
                         scoreUpdate()
                         console.log(localStorage)
-                        document.querySelector('.computer-choice').innerHTML= "<img src='scissor.jpeg' style='width: 50px;'>"
+                        document.querySelector('.computer-choice').innerHTML= "<img src='scissor-active.jpeg' style='width: 50px;'>"
                         
                     }
-                    document.querySelector('.player-choice').innerHTML= "<img src='rock.jpeg' style='width: 50px;'>"
+                    document.querySelector('.player-choice').innerHTML= "<img src='rock-active.jpeg' style='width: 50px;'>"
                     document.querySelector('.result').innerHTML= result
 
                     
@@ -235,7 +322,7 @@
                         localStorage.setItem('score',JSON.stringify(results))
                         scoreUpdate()
                         console.log(localStorage)
-                        document.querySelector('.computer-choice').   innerHTML= "<img src='rock.jpeg' style='width: 50px;'>"
+                        document.querySelector('.computer-choice').   innerHTML= "<img src='rock-active.jpeg' style='width: 50px;'>"
                         
                     }
                     else if (computerMove==='Paper'){
@@ -246,23 +333,29 @@
                         localStorage.setItem('score',JSON.stringify(results))
                         scoreUpdate()
                         console.log(localStorage)
-                        document.querySelector('.computer-choice').   innerHTML= "<img src='paper.jpeg' style='width: 50px;'>"
+                        document.querySelector('.computer-choice').   innerHTML= "<img src='paper-active.jpeg' style='width: 50px;'>"
                         
                     }
 
                     else if (computerMove==='Scissor'){
 
-                        result='You Lose'
+                        result='You Lose!'
                         results.Lose+=1
                         
                         localStorage.setItem('score',JSON.stringify(results))
                         scoreUpdate()
                         console.log(localStorage)
-                        document.querySelector('.computer-choice').   innerHTML= "<img src='scissor.jpeg' style='width: 50px;'>"
+                        document.querySelector('.computer-choice').   innerHTML= "<img src='scissor-active.jpeg' style='width: 50px;'>"
                         
                     }
-                    document.querySelector('.player-choice').     innerHTML= "<img src='paper.jpeg' style='width: 50px;'>"
+                    document.querySelector('.player-choice').     innerHTML= "<img src='paper-active.jpeg' style='width: 50px;'>"
                     document.querySelector('.result').innerHTML= result
+                    
+
+                   
+                    
+
+                    
                 }
                 //WHEN PLAYER CHOSE SCISSOR
                 else if (userMove==='Scissor'){
@@ -277,7 +370,7 @@
                         localStorage.setItem('score',JSON.stringify(results))
                         scoreUpdate()
                         console.log(localStorage)
-                        document.querySelector('.computer-choice').   innerHTML= "<img src='rock.jpeg' style='width: 50px;'>"
+                        document.querySelector('.computer-choice').   innerHTML= "<img src='rock-active.jpeg' style='width: 50px;'>"
                         
                     }
                     else if (computerMove==='Paper'){
@@ -288,7 +381,7 @@
                         localStorage.setItem('score',JSON.stringify(results))
                         scoreUpdate()
                         console.log(localStorage)
-                        document.querySelector('.computer-choice').   innerHTML= "<img src='paper.jpeg' style='width: 50px;'>"
+                        document.querySelector('.computer-choice').   innerHTML= "<img src='paper-active.jpeg' style='width: 50px;'>"
 
                         
                     }
@@ -301,13 +394,22 @@
                         localStorage.setItem('score',JSON.stringify(results))
                         scoreUpdate()
                         console.log(localStorage)
-                        document.querySelector('.computer-choice').innerHTML= "<img src='scissor.jpeg' style='width: 50px;'>"
+                        document.querySelector('.computer-choice').innerHTML= "<img src='scissor-active.jpeg' style='width: 50px;'>"
                         
                     }
 
-                    document.querySelector('.player-choice').     innerHTML= "<img src='scissor.jpeg' style='width: 50px;'>"
+                    document.querySelector('.player-choice').     innerHTML= "<img src='scissor-active.jpeg' style='width: 50px;'>"
                     document.querySelector('.result').innerHTML= result
+                    
+                    
+                    
                 }
+
+                        
+                
+                
+
+
             }
 
             //Function to update the score board.
